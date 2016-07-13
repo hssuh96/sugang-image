@@ -12,5 +12,5 @@ def image_save(index):
     im2.save(filename2)
 
 
-for i in range(1, 1001):
+for i in range(1, 2001):
     image_save(i)
