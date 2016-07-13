@@ -4,11 +4,11 @@ import numpy as np
 padding = np.array([1, 1])
 
 def image_save(index):
-    filename = "image_data/image_{0}.png".format(str(index))
-    filename1 = "image_data_processed/image_{0}.png".format(str(2 * index - 1))
-    filename2 = "image_data_processed/image_{0}.png".format(str(2 * index))
+    file_name = "image_data/image_{0}.png".format(str(index))
+    file_name1 = "image_data_processed/image_{0}.png".format(str(2 * index - 1))
+    file_name2 = "image_data_processed/image_{0}.png".format(str(2 * index))
 
-    im = Image.open(filename)
+    im = Image.open(file_name)
     pix = im.load()
 
     color1 = color2 = (192, 192, 192)
@@ -63,8 +63,8 @@ def image_save(index):
     for i in range(0, im2Arr.shape[0]):
         pix2[int(im2Arr[i, 0]), int(im2Arr[i, 1])] = 0
 
-    im1.save(filename1)
-    im2.save(filename2)
+    im1.save(file_name1)
+    im2.save(file_name2)
 
 
 for i in range(1, 1001):
