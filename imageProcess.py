@@ -1,6 +1,7 @@
 from PIL import Image
 import numpy as np
 
+padding = np.array([1, 1])
 
 def image_save(index):
     filename = "image_data/image_{0}.png".format(str(index))
@@ -9,12 +10,6 @@ def image_save(index):
 
     im = Image.open(filename)
     pix = im.load()
-
-    im1 = Image.new('1', (26, 26), color=1)
-    im2 = Image.new('1', (26, 26), color=1)
-
-    pix1 = im1.load()
-    pix2 = im2.load()
 
     color1 = color2 = (192, 192, 192)
 
@@ -42,14 +37,25 @@ def image_save(index):
     im2Arr = np.array(im2Arr, dtype=int)
 
 
-    im1Arr_min = im1Arr.min(axis=0)
-    im1Arr_max = im1Arr.max(axis=0)
-    im1Arr = im1Arr - (im1Arr_min + im1Arr_max) / 2 + [13, 13]
+    im1_min = im1Arr.min(axis=0)
+    im1_max = im1Arr.max(axis=0)
+    im1_mid = (im1_min + im1_max)/2
+    im1_size = im1_max - im1_min + [1,1] + 2*padding
+    im1_size = np.array([im1_size.max(), im1_size.max()])
+    im1Arr = im1Arr - im1_mid + im1_size/2
 
-    im2Arr_min = im2Arr.min(axis=0)
-    im2Arr_max = im2Arr.max(axis=0)
-    im2Arr = im2Arr - (im2Arr_min + im2Arr_max) / 2 + [13, 13]
+    im2_min = im2Arr.min(axis=0)
+    im2_max = im2Arr.max(axis=0)
+    im2_mid = (im2_min + im2_max)/2
+    im2_size = im2_max - im2_min + [1,1] + 2*padding
+    im2_size = np.array([im2_size.max(), im2_size.max()])
+    im2Arr = im2Arr - im2_mid + im2_size / 2
 
+    im1 = Image.new('1', im1_size, color=1)
+    im2 = Image.new('1', im2_size, color=1)
+
+    pix1 = im1.load()
+    pix2 = im2.load()
 
     for i in range(0, im1Arr.shape[0]):
         pix1[int(im1Arr[i, 0]), int(im1Arr[i, 1])] = 0
@@ -57,12 +63,8 @@ def image_save(index):
     for i in range(0, im2Arr.shape[0]):
         pix2[int(im2Arr[i, 0]), int(im2Arr[i, 1])] = 0
 
-
     im1.save(filename1)
     im2.save(filename2)
-
-    # print("img1 size: ", im2Arr_max - im2Arr_min)
-    # print("img2 size: ", im2Arr_max - im2Arr_min)
 
 
 for i in range(1, 1001):

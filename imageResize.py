@@ -7,7 +7,7 @@ def image_save(index):
 
     im = Image.open(filename).convert('L')
 
-    im2 = im.resize((30,30), Image.LANCZOS)
+    im2 = im.resize((30,30), Image.BILINEAR)
 
     im2.save(filename2)
 
