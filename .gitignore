@@ -59,6 +59,9 @@ fabric.properties
 .idea/sugang_image.iml
 image_data/
 image_data_labeled/
+image_data_labeled_2/
+image_data_labeled_3/
 image_data_processed/
 image_data_resize/
+image_data_result_format/
 image_data_resize 복사본/

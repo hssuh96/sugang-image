@@ -1,7 +1,7 @@
 from PIL import Image
 import numpy as np
 
-padding = np.array([1, 1])
+padding = np.array([0, 0])
 
 def image_save(index):
     file_name = "image_data/image_{0}.png".format(str(index))
