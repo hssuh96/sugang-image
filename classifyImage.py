@@ -35,11 +35,11 @@ def cal_diff(digit, img):
     return diff_eqn(digit, img_avg_arr_float, img_arr_float)
 
 
-def classify_image(index):
+def classify_image(index, difit_find_list):
     file_name = "image_data_resize/image_{0}.png".format(str(index))
     img = Image.open(file_name)
 
-    diff_array = np.zeros(shape=10)
+    diff_array = {1:-1, 2:-1, }
 
     for i in range(0,10):
         diff_array[i] = cal_diff(i, img)
@@ -49,5 +49,6 @@ def classify_image(index):
     save_file_name = "image_data_result_5/{0}/image_{1}.png".format(str(estimate_digit), str(index))
     img.save(save_file_name)
 
-for i in range(1, 2001):
-    classify_image(i)
+
+# for i in range(1, 2001):
+#     classify_image(i)
