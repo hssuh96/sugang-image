@@ -146,6 +146,7 @@ def classify_image_method2(img):
         else:
             return 4
     else:
+        # 1,2,3,5,7
         return -1
 
 
