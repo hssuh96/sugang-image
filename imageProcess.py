@@ -4,9 +4,9 @@ import numpy as np
 padding = np.array([0, 0])
 
 def image_save(index):
-    file_name = "image_data/image_{0}.png".format(str(index))
-    file_name1 = "image_data_processed/image_{0}.png".format(str(2 * index - 1))
-    file_name2 = "image_data_processed/image_{0}.png".format(str(2 * index))
+    file_name = "image_data_test/image_{0}.png".format(str(index))
+    file_name1 = "image_data_test_processed/image_{0}.png".format(str(2 * index - 1))
+    file_name2 = "image_data_test_processed/image_{0}.png".format(str(2 * index))
 
     im = Image.open(file_name)
     pix = im.load()
